@@ -35,6 +35,14 @@ URL local con Artisan: `http://127.0.0.1:8000`
 
 En un servidor con Apache o Nginx, no se usa `php artisan serve`. El servidor web debe apuntar el document root a `public/` y exponer el sitio por el puerto configurado del servidor, normalmente `80` para HTTP y `443` para HTTPS.
 
+En cPanel/hosting compartido, si el dominio apunta al root del repositorio y aparece `ERROR 403 - FORBIDDEN`, significa que Apache no esta entrando a `public/index.php`. La configuracion recomendada es cambiar el document root del dominio a:
+
+```text
+/ruta/del/proyecto/public
+```
+
+Si el hosting no permite cambiar el document root, el proyecto incluye un `index.php` y `.htaccess` en la raiz como fallback para redirigir las solicitudes hacia `public/` y bloquear carpetas internas.
+
 ## Configuracion inicial
 
 Edita `.env` con valores locales seguros. No se configura base de datos. La informacion del sitio vive en `config/site.php`, `config/blog.php`, `config/projects.php` y `config/errors.php`.
