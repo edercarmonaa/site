@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 final class ContentCache
 {
@@ -11,7 +13,16 @@ final class ContentCache
         $mtime = file_exists($path) ? (string) filemtime($path) : 'missing';
         $key = 'content:'.sha1($path.':'.$mtime);
 
-        return Cache::rememberForever($key, $callback);
+        try {
+            return Cache::rememberForever($key, $callback);
+        } catch (Throwable $e) {
+            Log::warning('Content cache unavailable; reading source file directly.', [
+                'path' => $path,
+                'error' => $e->getMessage(),
+            ]);
+
+            return $callback();
+        }
     }
 
     public function clear(): void
