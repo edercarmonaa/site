@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /vendor/
+Disallow: /storage/
+Disallow: /.env
+Disallow: /composer.lock
+
+Sitemap: https://karedit.com.mx/sitemap.xml

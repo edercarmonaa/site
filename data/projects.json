@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Panel de automatizacion tecnica",
+    "description": "Aplicacion web de ejemplo para documentar tareas repetibles, ejecutar flujos internos y consultar resultados operativos.",
+    "technologies": ["Laravel", "PHP", "JSON"],
+    "year": 2026,
+    "github_url": "https://github.com/edercarmonaa/karedit-automation-panel"
+  },
+  {
+    "name": "Inventario ligero de bases de datos",
+    "description": "Proyecto de referencia para registrar conexiones, consultas utiles y notas de mantenimiento sin depender de una base de datos externa.",
+    "technologies": ["PHP", "MySQL", "PostgreSQL"],
+    "year": 2025,
+    "github_url": "https://github.com/edercarmonaa/karedit-db-inventory"
+  }
+]
