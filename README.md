@@ -23,10 +23,17 @@ KaredIt es el portafolio, blog tecnico y repositorio de guias de Eder Carmona. E
 composer install
 cp .env.example .env
 php artisan key:generate
+```
+
+Para desarrollo local opcional:
+
+```bash
 php artisan serve
 ```
 
-URL local: `http://127.0.0.1:8000`
+URL local con Artisan: `http://127.0.0.1:8000`
+
+En un servidor con Apache o Nginx, no se usa `php artisan serve`. El servidor web debe apuntar el document root a `public/` y exponer el sitio por el puerto configurado del servidor, normalmente `80` para HTTP y `443` para HTTPS.
 
 ## Configuracion inicial
 
