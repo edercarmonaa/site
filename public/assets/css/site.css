@@ -97,6 +97,14 @@ html { scroll-padding-top: 5.5rem; }
 .dark .certification-row:hover { background: rgba(63, 63, 70, .35); }
 .certification-main { align-items: center; display: flex; gap: .9rem; min-width: 0; }
 .certification-icon { align-items: center; background: rgb(161 161 170); border-radius: 999px; color: #fff; display: inline-flex; flex: 0 0 auto; font-family: "JetBrains Mono", monospace; font-size: .75rem; font-weight: 700; height: 1.6rem; justify-content: center; width: 1.6rem; }
+.certification-logo { flex: 0 0 auto; height: 1.75rem; width: 1.75rem; }
+.certification-logo-microsoft { display: grid; gap: .15rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.certification-logo-microsoft span:nth-child(1) { background: #f25022; }
+.certification-logo-microsoft span:nth-child(2) { background: #7fba00; }
+.certification-logo-microsoft span:nth-child(3) { background: #00a4ef; }
+.certification-logo-microsoft span:nth-child(4) { background: #ffb900; }
+.certification-logo-google { align-items: center; color: #4285f4; display: inline-flex; font-family: Arial, sans-serif; font-size: 1.45rem; font-weight: 700; justify-content: center; line-height: 1; }
+.certification-logo-default { align-items: center; background: rgb(161 161 170); border-radius: 999px; color: #fff; display: inline-flex; font-family: "JetBrains Mono", monospace; font-size: .75rem; font-weight: 700; justify-content: center; }
 .certification-badge { background: rgba(0,162,194,.12); border-radius: 999px; color: #00a2c2; display: inline-flex; font-family: "JetBrains Mono", monospace; font-size: .72rem; justify-self: start; padding: .2rem .65rem; }
 .certification-meta { color: rgb(82 82 91); }
 .dark .certification-meta { color: rgb(161 161 170); }

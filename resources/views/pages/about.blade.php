@@ -53,10 +53,21 @@
                     <caption class="sr-only">Listado de certificaciones profesionales</caption>
                     <tbody class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-700 dark:border-zinc-700">
                         @foreach ($certs as $certification)
+                            @php
+                                $issuer = Str::contains($certification['institution'], 'Microsoft') ? 'microsoft' : (Str::contains($certification['institution'], 'Google') ? 'google' : 'default');
+                            @endphp
                             <tr class="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/45">
                                 <td class="w-[40%] py-4 pl-4 pr-6">
                                     <div class="flex items-center gap-3">
-                                        <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-400 font-mono text-xs font-bold text-white" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
+                                        @if ($issuer === 'microsoft')
+                                            <span class="certification-logo certification-logo-microsoft" aria-hidden="true">
+                                                <span></span><span></span><span></span><span></span>
+                                            </span>
+                                        @elseif ($issuer === 'google')
+                                            <span class="certification-logo certification-logo-google" aria-hidden="true">G</span>
+                                        @else
+                                            <span class="certification-logo certification-logo-default" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
+                                        @endif
                                         <span class="font-semibold text-zinc-950 dark:text-white">{{ $certification['name'] }}</span>
                                     </div>
                                 </td>
