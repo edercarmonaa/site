@@ -29,15 +29,7 @@
                 'DevOps' => ['GitHub Actions'],
                 'Herramientas' => ['Python', 'Git'],
             ];
-            $certs = [
-                ['Google Business Intelligence Certificate', 'Google / Coursera', '2024'],
-                ['Microsoft Certified: Azure Data Fundamentals', 'Microsoft', '2025'],
-                ['Certificado de Ciberseguridad', 'Google / Coursera', '2024'],
-                ['Google IT Automation with Python Professional Certificate', 'Google / Coursera', '2023'],
-                ['Certificado de Soporte de TI', 'Google / Coursera', '2023'],
-                ['Certificado de Analisis de Datos', 'Google / Coursera', '2022'],
-                ['Microsoft Certified: Azure Fundamentals', 'Microsoft', '2022'],
-            ];
+            $certs = config('certifications');
         @endphp
         <section class="mt-14">
             <h2 class="section-title">Skills</h2>
@@ -57,11 +49,24 @@
         <section class="mt-14">
             <h2 class="section-title">Certificaciones</h2>
             <div class="mt-6 grid gap-4 md:grid-cols-2">
-                @foreach ($certs as [$name, $institution, $year])
-                    <article class="card">
-                        <h3 class="font-mono font-semibold">{{ $name }}</h3>
-                        <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{{ $institution }} · {{ $year }}</p>
-                    </article>
+                @foreach ($certs as $certification)
+                    @if ($certification['verification_url'])
+                        <a
+                            class="card block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
+                            href="{{ $certification['verification_url'] }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Verificar certificacion {{ $certification['name'] }}"
+                        >
+                            <h3 class="font-mono font-semibold">{{ $certification['name'] }}</h3>
+                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
+                        </a>
+                    @else
+                        <article class="card">
+                            <h3 class="font-mono font-semibold">{{ $certification['name'] }}</h3>
+                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
+                        </article>
+                    @endif
                 @endforeach
             </div>
         </section>
