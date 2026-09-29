@@ -50,6 +50,12 @@ final class ProjectService
             throw new InvalidArgumentException('Cada proyecto debe tener una URL de GitHub valida.');
         }
 
+        $project['image'] = $project['image'] ?? null;
+
+        if ($project['image'] !== null && (! is_string($project['image']) || ! str_starts_with($project['image'], '/assets/img/'))) {
+            throw new InvalidArgumentException('La imagen del proyecto debe ser null o una ruta publica dentro de /assets/img/.');
+        }
+
         return $project;
     }
 }

@@ -12,15 +12,21 @@
                 <p class="mt-3 leading-7 text-zinc-600 dark:text-zinc-300">{{ $project['description'] }}</p>
             </div>
         </div>
-        <div class="project-feature-panel" aria-hidden="true">
-            <div class="project-feature-window">
-                <span></span><span></span><span></span>
-            </div>
-            <div class="space-y-3 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                <div class="h-3 w-3/4 rounded bg-zinc-200 dark:bg-zinc-700"></div>
-                <div class="h-3 w-1/2 rounded bg-zinc-200 dark:bg-zinc-700"></div>
-                <div class="h-3 w-2/3 rounded bg-zinc-200 dark:bg-zinc-700"></div>
-            </div>
+        <div class="project-feature-panel">
+            @if ($project['image'])
+                <img src="{{ $project['image'] }}" alt="Vista previa de {{ $project['name'] }}" loading="lazy" class="project-feature-image" width="720" height="420">
+            @else
+                <div aria-hidden="true">
+                    <div class="project-feature-window">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="space-y-3 font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                        <div class="h-3 w-3/4 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+                        <div class="h-3 w-1/2 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+                        <div class="h-3 w-2/3 rounded bg-zinc-200 dark:bg-zinc-700"></div>
+                    </div>
+                </div>
+            @endif
         </div>
         <div class="mt-5 flex flex-wrap gap-2">
             @foreach ($project['technologies'] as $technology)

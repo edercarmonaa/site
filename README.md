@@ -60,6 +60,19 @@ Edita `.env` con valores locales seguros. No se configura base de datos. La info
 
 Cada post usa el nombre del archivo como slug. Ejemplo: `content/posts/instalar-ssh-debian.md` genera `/blog/instalar-ssh-debian`.
 
+Los proyectos se editan en `data/projects.json`. El campo `image` es opcional y puede quedar en `null`; si se usa, debe apuntar a una imagen publica dentro de `public/assets/img/`, por ejemplo:
+
+```json
+{
+  "name": "Proyecto",
+  "description": "Descripcion breve",
+  "technologies": ["Laravel", "PHP"],
+  "year": 2026,
+  "github_url": "https://github.com/usuario/proyecto",
+  "image": "/assets/img/projects/proyecto.png"
+}
+```
+
 Front matter listo para copiar:
 
 ```yaml

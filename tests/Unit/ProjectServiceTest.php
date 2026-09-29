@@ -13,5 +13,6 @@ final class ProjectServiceTest extends TestCase
 
         $this->assertSame(2026, $projects->first()['year']);
         $projects->each(fn (array $project) => $this->assertMatchesRegularExpression('/^https:\/\/github\.com\//', $project['github_url']));
+        $projects->each(fn (array $project) => $this->assertArrayHasKey('image', $project));
     }
 }
