@@ -48,25 +48,21 @@
         </section>
         <section class="mt-14">
             <h2 class="section-title">Certificaciones</h2>
-            <div class="mt-6 grid gap-4 md:grid-cols-2">
+            <div class="certification-list mt-6">
                 @foreach ($certs as $certification)
-                    @if ($certification['verification_url'])
-                        <a
-                            class="card block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
-                            href="{{ $certification['verification_url'] }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Verificar certificacion {{ $certification['name'] }}"
-                        >
-                            <h3 class="font-mono font-semibold">{{ $certification['name'] }}</h3>
-                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
-                        </a>
-                    @else
-                        <article class="card">
-                            <h3 class="font-mono font-semibold">{{ $certification['name'] }}</h3>
-                            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
-                        </article>
-                    @endif
+                    <article class="certification-row">
+                        <div class="certification-main">
+                            <span class="certification-icon" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
+                            <h3 class="font-semibold text-zinc-950 dark:text-white">{{ $certification['name'] }}</h3>
+                        </div>
+                        <span class="certification-badge">Certificación</span>
+                        <p class="certification-meta">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
+                        @if ($certification['verification_url'])
+                            <a class="certification-link" href="{{ $certification['verification_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Verificar certificacion {{ $certification['name'] }}">Learn more <span aria-hidden="true">→</span></a>
+                        @else
+                            <span class="certification-link-disabled">Learn more <span aria-hidden="true">→</span></span>
+                        @endif
+                    </article>
                 @endforeach
             </div>
         </section>

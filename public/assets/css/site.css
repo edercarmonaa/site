@@ -89,8 +89,22 @@ html { scroll-padding-top: 5.5rem; }
 .dark .project-feature-panel { background-image: radial-gradient(rgb(82 82 91) 1px, transparent 1px); border-color: rgb(63 63 70); }
 .project-feature-window { align-items: center; background: rgb(24 24 27); border-radius: .75rem .75rem 0 0; display: flex; gap: .45rem; height: 2rem; margin: 0 0 1.5rem; padding: 0 .75rem; }
 .project-feature-window span { background: rgb(82 82 91); border-radius: 999px; display: block; height: .55rem; width: .55rem; }
+.certification-list { border-top: 1px solid rgb(228 228 231); }
+.dark .certification-list { border-top-color: rgb(63 63 70); }
+.certification-row { align-items: center; border-bottom: 1px solid rgb(228 228 231); display: grid; gap: 1rem; padding: 1.25rem 0; }
+.dark .certification-row { border-bottom-color: rgb(63 63 70); }
+.certification-main { align-items: center; display: flex; gap: .9rem; min-width: 0; }
+.certification-icon { align-items: center; background: rgb(161 161 170); border-radius: 999px; color: #fff; display: inline-flex; flex: 0 0 auto; font-family: "JetBrains Mono", monospace; font-size: .75rem; font-weight: 700; height: 1.6rem; justify-content: center; width: 1.6rem; }
+.certification-badge { background: rgba(0,162,194,.12); border-radius: 999px; color: #00a2c2; display: inline-flex; font-family: "JetBrains Mono", monospace; font-size: .72rem; justify-self: start; padding: .2rem .65rem; }
+.certification-meta { color: rgb(82 82 91); }
+.dark .certification-meta { color: rgb(161 161 170); }
+.certification-link, .certification-link-disabled { color: rgb(113 113 122); font-weight: 600; justify-self: start; }
+.certification-link:hover { color: #00a2c2; }
+.certification-link-disabled { opacity: .45; }
 @media (min-width: 768px) {
   .project-entry { grid-template-columns: 18rem minmax(0, 1fr); gap: 3rem; padding: 2.8rem 0; }
   .project-entry-body { border-left: 1px solid rgb(228 228 231); padding-left: 3rem; }
   .dark .project-entry-body { border-left-color: rgb(63 63 70); }
+  .certification-row { grid-template-columns: minmax(0, 1.2fr) max-content minmax(10rem, .8fr) max-content; padding: 1.15rem 0; }
+  .certification-link, .certification-link-disabled { justify-self: end; }
 }
