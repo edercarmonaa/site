@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="mx-auto max-w-6xl px-5 py-8">
+    <div class="blog-frame mx-auto max-w-6xl px-5 py-8">
         <div class="blog-list" data-post-list>
             @foreach ($posts as $post)
                 @include('posts.partials.card', ['post' => $post])

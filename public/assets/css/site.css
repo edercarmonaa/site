@@ -60,18 +60,22 @@ html { scroll-padding-top: 5.5rem; }
 .prose-karedit img { border-radius: .75rem; cursor: zoom-in; margin-top: 1rem; max-width: 100%; }
 .fade-in { animation: fade-in .28s ease both; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-.blog-list { border-top: 1px solid rgb(228 228 231); }
-.dark .blog-list { border-top-color: rgb(63 63 70); }
-.blog-entry { border-bottom: 1px solid rgb(228 228 231); display: grid; gap: 1.5rem; padding: 2rem 0; }
+.blog-frame { background-image: linear-gradient(135deg, rgba(113,113,122,.08) 8.33%, transparent 8.33%, transparent 50%, rgba(113,113,122,.08) 50%, rgba(113,113,122,.08) 58.33%, transparent 58.33%, transparent 100%); background-size: 8px 8px; }
+.blog-list { background: rgba(255,255,255,.94); border-left: 1px solid rgb(228 228 231); border-right: 1px solid rgb(228 228 231); border-top: 1px solid rgb(228 228 231); }
+.dark .blog-list { background: rgba(47,47,53,.72); border-left-color: rgb(63 63 70); border-right-color: rgb(63 63 70); border-top-color: rgb(63 63 70); }
+.blog-entry { border-bottom: 1px solid rgb(228 228 231); display: grid; gap: 1.5rem; min-height: 9.5rem; padding: 2rem 1rem; transition: background-color .2s ease; }
+.blog-entry:hover { background: rgb(250 250 250); }
 .dark .blog-entry { border-bottom-color: rgb(63 63 70); }
-.blog-entry-date { color: rgb(82 82 91); font-family: "JetBrains Mono", monospace; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
+.dark .blog-entry:hover { background: rgba(63,63,70,.35); }
+.blog-entry-date { color: rgb(82 82 91); font-family: "JetBrains Mono", monospace; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
 .dark .blog-entry-date { color: rgb(161 161 170); }
 .blog-entry-body { min-width: 0; }
 .tag-subtle { background: transparent; color: rgb(113 113 122); }
 .tag-subtle:hover { border-color: #00a2c2; color: #00a2c2; }
 @media (min-width: 768px) {
-  .blog-entry { grid-template-columns: 18rem minmax(0, 1fr); gap: 3rem; padding: 2.8rem 0; }
-  .blog-entry-body { border-left: 1px solid rgb(228 228 231); padding-left: 3rem; }
+  .blog-entry { grid-template-columns: minmax(14rem, 26%) minmax(0, 1fr); gap: 0; padding: 0; }
+  .blog-entry-date { padding: 2rem 1.75rem; }
+  .blog-entry-body { border-left: 1px solid rgb(228 228 231); padding: 2rem 2.25rem; }
   .dark .blog-entry-body { border-left-color: rgb(63 63 70); }
 }
 .project-list { border-top: 1px solid rgb(228 228 231); }
