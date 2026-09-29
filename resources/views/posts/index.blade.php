@@ -28,8 +28,8 @@
             </div>
         </div>
     </div>
-    <div class="blog-frame mx-auto max-w-6xl px-5 py-8">
-        <div class="blog-list" data-post-list>
+    <div class="mx-auto max-w-6xl bg-[linear-gradient(135deg,rgba(113,113,122,.08)_8.33%,transparent_8.33%,transparent_50%,rgba(113,113,122,.08)_50%,rgba(113,113,122,.08)_58.33%,transparent_58.33%,transparent_100%)] bg-[length:8px_8px] px-5 py-8">
+        <div class="border-x border-t border-zinc-200 bg-white/95 dark:border-zinc-700 dark:bg-graphite/75" data-post-list>
             @foreach ($posts as $post)
                 @include('posts.partials.card', ['post' => $post])
             @endforeach
