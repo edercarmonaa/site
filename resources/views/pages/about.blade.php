@@ -48,22 +48,33 @@
         </section>
         <section class="mt-14">
             <h2 class="section-title">Certificaciones</h2>
-            <div class="certification-list mt-6">
-                @foreach ($certs as $certification)
-                    <article class="certification-row">
-                        <div class="certification-main">
-                            <span class="certification-icon" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
-                            <h3 class="font-semibold text-zinc-950 dark:text-white">{{ $certification['name'] }}</h3>
-                        </div>
-                        <span class="certification-badge">Certificación</span>
-                        <p class="certification-meta">{{ $certification['institution'] }} · {{ $certification['year'] }}</p>
-                        @if ($certification['verification_url'])
-                            <a class="certification-link" href="{{ $certification['verification_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Verificar certificacion {{ $certification['name'] }}">Learn more <span aria-hidden="true">→</span></a>
-                        @else
-                            <span class="certification-link-disabled">Learn more <span aria-hidden="true">→</span></span>
-                        @endif
-                    </article>
-                @endforeach
+            <div class="mt-6 overflow-x-auto">
+                <table class="min-w-[860px] w-full border-collapse text-left">
+                    <caption class="sr-only">Listado de certificaciones profesionales</caption>
+                    <tbody class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-700 dark:border-zinc-700">
+                        @foreach ($certs as $certification)
+                            <tr class="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/45">
+                                <td class="w-[40%] py-4 pl-4 pr-6">
+                                    <div class="flex items-center gap-3">
+                                        <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-400 font-mono text-xs font-bold text-white" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
+                                        <span class="font-semibold text-zinc-950 dark:text-white">{{ $certification['name'] }}</span>
+                                    </div>
+                                </td>
+                                <td class="w-[16%] px-6 py-4">
+                                    <span class="inline-flex rounded-full bg-cyan-50 px-3 py-1 font-mono text-xs font-semibold text-brand dark:bg-cyan-950/40">Certificación</span>
+                                </td>
+                                <td class="w-[28%] px-6 py-4 text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</td>
+                                <td class="w-[16%] py-4 pl-6 pr-4 text-right">
+                                    @if ($certification['verification_url'])
+                                        <a class="whitespace-nowrap font-semibold text-zinc-500 hover:text-brand" href="{{ $certification['verification_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Verificar certificacion {{ $certification['name'] }}">Learn more <span aria-hidden="true">→</span></a>
+                                    @else
+                                        <span class="whitespace-nowrap font-semibold text-zinc-400/70">Learn more <span aria-hidden="true">→</span></span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </section>
     </div>
