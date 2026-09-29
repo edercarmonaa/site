@@ -49,7 +49,7 @@
         <section class="mt-14">
             <h2 class="section-title">Certificaciones</h2>
             <div class="mt-6 overflow-x-auto">
-                <table class="min-w-[860px] w-full border-collapse text-left">
+                <table class="min-w-[760px] w-full border-collapse text-left">
                     <caption class="sr-only">Listado de certificaciones profesionales</caption>
                     <tbody class="divide-y divide-zinc-200 border-y border-zinc-200 dark:divide-zinc-700 dark:border-zinc-700">
                         @foreach ($certs as $certification)
@@ -57,29 +57,33 @@
                                 $issuer = Str::contains($certification['institution'], 'Microsoft') ? 'microsoft' : (Str::contains($certification['institution'], 'Google') ? 'google' : 'default');
                             @endphp
                             <tr class="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/45">
-                                <td class="w-[40%] py-4 pl-4 pr-6">
+                                <td class="w-[48%] py-4 pl-4 pr-6">
                                     <div class="flex items-center gap-3">
                                         @if ($issuer === 'microsoft')
-                                            <span class="certification-logo certification-logo-microsoft" aria-hidden="true">
-                                                <span></span><span></span><span></span><span></span>
+                                            <span class="grid h-7 w-7 shrink-0 grid-cols-2 gap-0.5" aria-hidden="true">
+                                                <span class="block bg-[#f25022]"></span>
+                                                <span class="block bg-[#7fba00]"></span>
+                                                <span class="block bg-[#00a4ef]"></span>
+                                                <span class="block bg-[#ffb900]"></span>
                                             </span>
                                         @elseif ($issuer === 'google')
-                                            <span class="certification-logo certification-logo-google" aria-hidden="true">G</span>
+                                            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center font-sans text-2xl font-bold text-[#4285f4]" aria-hidden="true">G</span>
                                         @else
-                                            <span class="certification-logo certification-logo-default" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
+                                            <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-400 font-mono text-xs font-bold text-white" aria-hidden="true">{{ Str::upper(Str::substr($certification['institution'], 0, 1)) }}</span>
                                         @endif
                                         <span class="font-semibold text-zinc-950 dark:text-white">{{ $certification['name'] }}</span>
                                     </div>
                                 </td>
-                                <td class="w-[16%] px-6 py-4">
-                                    <span class="inline-flex rounded-full bg-cyan-50 px-3 py-1 font-mono text-xs font-semibold text-brand dark:bg-cyan-950/40">Certificación</span>
-                                </td>
-                                <td class="w-[28%] px-6 py-4 text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</td>
-                                <td class="w-[16%] py-4 pl-6 pr-4 text-right">
+                                <td class="w-[40%] px-6 py-4 text-zinc-600 dark:text-zinc-300">{{ $certification['institution'] }} · {{ $certification['year'] }}</td>
+                                <td class="w-[12%] py-4 pl-6 pr-4 text-right">
                                     @if ($certification['verification_url'])
-                                        <a class="whitespace-nowrap font-semibold text-zinc-500 hover:text-brand" href="{{ $certification['verification_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Verificar certificacion {{ $certification['name'] }}">Learn more <span aria-hidden="true">→</span></a>
+                                        <a class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 hover:text-brand dark:hover:bg-zinc-800" href="{{ $certification['verification_url'] }}" target="_blank" rel="noopener noreferrer" aria-label="Verificar certificacion {{ $certification['name'] }}" title="Ver certificacion">
+                                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        </a>
                                     @else
-                                        <span class="whitespace-nowrap font-semibold text-zinc-400/70">Learn more <span aria-hidden="true">→</span></span>
+                                        <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-300" aria-label="Sin enlace de verificacion">
+                                            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                        </span>
                                     @endif
                                 </td>
                             </tr>
