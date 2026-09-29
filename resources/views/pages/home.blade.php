@@ -43,7 +43,7 @@
         </div>
         <div class="mt-6 grid gap-4">
             @foreach ($latestPosts as $post)
-                @include('posts.partials.card', ['post' => $post])
+                @include('posts.partials.card', ['post' => $post, 'variant' => 'home'])
             @endforeach
         </div>
     </div>
