@@ -17,7 +17,7 @@
     <div class="sticky top-16 z-30 border-y border-zinc-200 bg-white/95 py-4 backdrop-blur dark:border-zinc-700 dark:bg-graphite/95">
         <div class="mx-auto max-w-6xl px-5">
             <label class="relative block">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" aria-hidden="true">⌕</span>
+                <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
                 <input id="blog-search" class="input pl-10" type="search" placeholder="Buscar..." aria-label="Buscar publicaciones">
             </label>
             <div class="mt-3 flex flex-wrap gap-2" aria-label="Filtros de categoria">
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="mx-auto max-w-6xl px-5 py-8">
-        <div class="grid gap-5" data-post-list>
+        <div class="blog-list" data-post-list>
             @foreach ($posts as $post)
                 @include('posts.partials.card', ['post' => $post])
             @endforeach
