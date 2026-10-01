@@ -30,6 +30,11 @@ html { scroll-padding-top: 5.5rem; }
 .text-link:hover { color: #00a2c2; }
 .dark .text-link { color: #40c7df; }
 .footer-link:hover { color: #00a2c2; }
+.footer-social-link { align-items: center; border: 1px solid rgb(212 212 216); border-radius: .6rem; color: inherit; display: inline-flex; height: 2.35rem; justify-content: center; transition: border-color .2s ease, color .2s ease; width: 2.35rem; }
+.footer-social-link:hover { border-color: #00a2c2; color: #00a2c2; }
+.footer-social-link svg { height: 1.15rem; width: 1.15rem; }
+.dark .footer-social-link { border-color: rgb(63 63 70); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .tag, .tag-selected { border: 1px solid rgb(212 212 216); border-radius: .5rem; color: rgb(82 82 91); display: inline-flex; font-family: "JetBrains Mono", monospace; font-size: .78rem; padding: .25rem .5rem; }
 .tag-selected, .filter-button.active { border-color: #00a2c2; color: #00a2c2; }
 .dark .tag, .dark .tag-selected { border-color: rgb(82 82 91); color: rgb(212 212 216); }
