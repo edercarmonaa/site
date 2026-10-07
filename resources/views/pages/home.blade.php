@@ -29,17 +29,29 @@
     <div class="mx-auto max-w-6xl px-5 py-14">
         <h2 class="section-title">Areas</h2>
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            @php
-                $areaIcons = [
-                    'Backend & APIs' => '⚙️',
-                    'Linux & SysAdmin' => '>_',
-                    'Bases de datos' => '🗄️',
-                    'Automatización & Scripting' => '{}',
-                ];
-            @endphp
             @foreach (config('site.areas') as $area)
                 <article class="card fade-in flex h-full min-h-36 flex-col justify-between gap-5">
-                    <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-100 font-mono text-xl font-bold text-zinc-950 dark:bg-zinc-800 dark:text-white" aria-hidden="true">{{ $areaIcons[$area] ?? '•' }}</span>
+                    <span class="flex h-12 w-12 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 text-zinc-800 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100" aria-hidden="true">
+                        @switch($area)
+                            @case('Backend & APIs')
+                            @case('Desarrollo de software')
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z"/><path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.06.06a2.1 2.1 0 0 1-2.97 2.97l-.06-.06a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.08 1.65v.18a2.1 2.1 0 0 1-4.2 0v-.1A1.8 1.8 0 0 0 8.45 19.6a1.8 1.8 0 0 0-1.98.36l-.06.06a2.1 2.1 0 0 1-2.97-2.97l.06-.06A1.8 1.8 0 0 0 3.86 15a1.8 1.8 0 0 0-1.65-1.08h-.1a2.1 2.1 0 0 1 0-4.2h.1A1.8 1.8 0 0 0 3.86 8.6a1.8 1.8 0 0 0-.36-1.98l-.06-.06a2.1 2.1 0 0 1 2.97-2.97l.06.06a1.8 1.8 0 0 0 1.98.36h.02A1.8 1.8 0 0 0 9.55 2.4v-.1a2.1 2.1 0 0 1 4.2 0v.1a1.8 1.8 0 0 0 1.08 1.65 1.8 1.8 0 0 0 1.98-.36l.06-.06a2.1 2.1 0 0 1 2.97 2.97l-.06.06A1.8 1.8 0 0 0 19.42 8.6v.02A1.8 1.8 0 0 0 21 9.7h.1a2.1 2.1 0 0 1 0 4.2H21a1.8 1.8 0 0 0-1.6 1.1Z"/></svg>
+                                @break
+                            @case('Linux & SysAdmin')
+                            @case('Linux')
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17 10 11 4 5"/><path d="M12 19h8"/></svg>
+                                @break
+                            @case('Bases de datos')
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.66 3.13 3 7 3s7-1.34 7-3V5"/><path d="M5 11v6c0 1.66 3.13 3 7 3s7-1.34 7-3v-6"/></svg>
+                                @break
+                            @case('Automatización & Scripting')
+                            @case('Tutoriales')
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m14 5-4 14"/></svg>
+                                @break
+                            @default
+                                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M3 12h18"/></svg>
+                        @endswitch
+                    </span>
                     <h3 class="font-mono text-lg font-semibold leading-snug">{{ $area }}</h3>
                 </article>
             @endforeach
