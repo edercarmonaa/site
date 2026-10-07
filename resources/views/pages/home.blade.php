@@ -29,8 +29,19 @@
     <div class="mx-auto max-w-6xl px-5 py-14">
         <h2 class="section-title">Areas</h2>
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            @php
+                $areaIcons = [
+                    'Backend & APIs' => '⚙️',
+                    'Linux & SysAdmin' => '>_',
+                    'Bases de datos' => '🗄️',
+                    'Automatización & Scripting' => '{}',
+                ];
+            @endphp
             @foreach (config('site.areas') as $area)
-                <article class="card fade-in"><h3 class="font-mono text-lg font-semibold">{{ $area }}</h3></article>
+                <article class="card fade-in flex h-full min-h-36 flex-col justify-between gap-5">
+                    <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-zinc-100 font-mono text-xl font-bold text-zinc-950 dark:bg-zinc-800 dark:text-white" aria-hidden="true">{{ $areaIcons[$area] ?? '•' }}</span>
+                    <h3 class="font-mono text-lg font-semibold leading-snug">{{ $area }}</h3>
+                </article>
             @endforeach
         </div>
     </div>

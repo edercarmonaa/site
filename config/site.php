@@ -25,5 +25,10 @@ return [
         'youtube' => null,
     ],
     'quick_chips' => ['Laravel', 'Linux', 'Bases de datos', 'Automatizacion'],
-    'areas' => ['Desarrollo de software', 'Linux', 'Bases de datos', 'Tutoriales'],
+    'areas' => [
+        'Backend & APIs',
+        'Linux & SysAdmin',
+        'Bases de datos',
+        'Automatización & Scripting',
+    ],
 ];
