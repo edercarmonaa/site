@@ -14,7 +14,7 @@
         </div>
         <div class="project-feature-panel">
             @if ($project['image'])
-                <img src="{{ $project['image'] }}" alt="Vista previa de {{ $project['name'] }}" loading="lazy" class="project-feature-image" width="720" height="420">
+                <img src="{{ $project['image'] }}" alt="Vista previa de {{ $project['name'] }}" loading="lazy" class="project-feature-image">
             @else
                 <div aria-hidden="true">
                     <div class="project-feature-window">
