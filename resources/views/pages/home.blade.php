@@ -84,7 +84,7 @@
         </div>
     </div>
 </section>
-<section class="section">
+<section class="section bg-zinc-50 dark:bg-zinc-900/30">
     <div class="mx-auto max-w-6xl px-5 py-14">
         <div class="section-heading">
             <h2 class="section-title">Ultimos cursos</h2>
