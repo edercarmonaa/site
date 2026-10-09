@@ -38,6 +38,7 @@
                     ['label' => 'Inicio', 'route' => 'home', 'active' => request()->routeIs('home')],
                     ['label' => 'Sobre mí', 'route' => 'about', 'active' => request()->routeIs('about')],
                     ['label' => 'Proyectos', 'route' => 'projects', 'active' => request()->routeIs('projects')],
+                    ['label' => 'Cursos', 'route' => 'courses', 'active' => request()->routeIs('courses')],
                     ['label' => 'Blog', 'route' => 'blog.index', 'active' => request()->routeIs('blog.*')],
                 ];
             @endphp

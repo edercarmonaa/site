@@ -84,4 +84,17 @@
         </div>
     </div>
 </section>
+<section class="section">
+    <div class="mx-auto max-w-6xl px-5 py-14">
+        <div class="section-heading">
+            <h2 class="section-title">Ultimos cursos</h2>
+            <a href="{{ route('courses') }}" class="text-link">Ver todos</a>
+        </div>
+        <div class="mt-6 grid gap-4 md:grid-cols-3">
+            @foreach ($latestCourses as $course)
+                @include('pages.partials.course-card', ['course' => $course])
+            @endforeach
+        </div>
+    </div>
+</section>
 @endsection

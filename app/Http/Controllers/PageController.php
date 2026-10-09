@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CourseService;
 use App\Services\PostService;
 use App\Services\ProjectService;
 use App\Services\SeoService;
@@ -10,11 +11,12 @@ use Illuminate\Http\Request;
 
 final class PageController
 {
-    public function home(Request $request, PostService $posts, ProjectService $projects, SeoService $seo): View
+    public function home(Request $request, PostService $posts, ProjectService $projects, CourseService $courses, SeoService $seo): View
     {
         return view('pages.home', [
             'latestPosts' => $posts->latest(),
             'latestProjects' => $projects->latest(),
+            'latestCourses' => $courses->latest(),
             'seo' => $this->seo('Inicio | KaredIt', config('site.description'), $seo, $request),
         ]);
     }
@@ -27,6 +29,11 @@ final class PageController
     public function projects(Request $request, ProjectService $projects, SeoService $seo): View
     {
         return view('pages.projects', ['projects' => $projects->all(), 'seo' => $this->seo('Proyectos | KaredIt', 'Proyectos de software, bases de datos y automatizacion.', $seo, $request)]);
+    }
+
+    public function courses(Request $request, CourseService $courses, SeoService $seo): View
+    {
+        return view('pages.courses', ['courses' => $courses->all(), 'seo' => $this->seo('Cursos | KaredIt', 'Cursos, guias y repositorios educativos de tecnologia.', $seo, $request)]);
     }
 
     public function privacy(Request $request, SeoService $seo): View

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/projects', [PageController::class, 'projects'])->name('projects');
+Route::get('/courses', [PageController::class, 'courses'])->name('courses');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');

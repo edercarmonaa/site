@@ -8,7 +8,7 @@ final class PublicPagesTest extends TestCase
 {
     public function test_public_pages_render_successfully(): void
     {
-        foreach (['/', '/about', '/projects', '/blog', '/privacy'] as $path) {
+        foreach (['/', '/about', '/projects', '/courses', '/blog', '/privacy'] as $path) {
             $this->get($path)->assertOk();
         }
     }
