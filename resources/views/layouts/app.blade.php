@@ -17,7 +17,7 @@
         tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: '#00a2c2', graphite: '#2f2f35' }, fontFamily: { sans: ['Roboto', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] } } } };
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
-    <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="stylesheet" href="/assets/css/site.css?v={{ filemtime(public_path('assets/css/site.css')) }}">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
