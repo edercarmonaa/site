@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
@@ -32,6 +33,20 @@ final class CourseService
     public function latest(int $limit = 3): Collection
     {
         return $this->all()->take($limit);
+    }
+
+    public function paginate(int $page = 1): LengthAwarePaginator
+    {
+        $courses = $this->all();
+        $perPage = (int) config('courses.courses_per_page');
+
+        return new LengthAwarePaginator(
+            $courses->forPage($page, $perPage)->values(),
+            $courses->count(),
+            $perPage,
+            $page,
+            ['path' => route('courses')]
+        );
     }
 
     private function validate(array $course): array

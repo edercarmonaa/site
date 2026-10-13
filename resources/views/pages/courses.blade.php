@@ -10,6 +10,7 @@
                 @include('pages.partials.course-card', ['course' => $course, 'variant' => 'feature'])
             @endforeach
         </div>
+        <div class="mt-8">{{ $courses->links() }}</div>
     </div>
 </section>
 @endsection

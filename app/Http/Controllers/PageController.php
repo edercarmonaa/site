@@ -28,12 +28,18 @@ final class PageController
 
     public function projects(Request $request, ProjectService $projects, SeoService $seo): View
     {
-        return view('pages.projects', ['projects' => $projects->all(), 'seo' => $this->seo('Proyectos | KaredIt', 'Proyectos de software, bases de datos y automatizacion.', $seo, $request)]);
+        return view('pages.projects', [
+            'projects' => $projects->paginate((int) $request->query('page', 1)),
+            'seo' => $this->seo('Proyectos | KaredIt', 'Proyectos de software, bases de datos y automatizacion.', $seo, $request),
+        ]);
     }
 
     public function courses(Request $request, CourseService $courses, SeoService $seo): View
     {
-        return view('pages.courses', ['courses' => $courses->all(), 'seo' => $this->seo('Cursos | KaredIt', 'Cursos, guias y repositorios educativos de tecnologia.', $seo, $request)]);
+        return view('pages.courses', [
+            'courses' => $courses->paginate((int) $request->query('page', 1)),
+            'seo' => $this->seo('Cursos | KaredIt', 'Cursos, guias y repositorios educativos de tecnologia.', $seo, $request),
+        ]);
     }
 
     public function privacy(Request $request, SeoService $seo): View

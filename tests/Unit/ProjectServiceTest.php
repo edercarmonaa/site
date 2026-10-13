@@ -15,4 +15,17 @@ final class ProjectServiceTest extends TestCase
         $projects->each(fn (array $project) => $this->assertMatchesRegularExpression('/^https:\/\/github\.com\//', $project['github_url']));
         $projects->each(fn (array $project) => $this->assertArrayHasKey('image', $project));
     }
+
+    public function test_projects_can_be_paginated(): void
+    {
+        config(['projects.projects_per_page' => 1]);
+
+        $projects = app(ProjectService::class)->paginate(page: 2);
+
+        $this->assertSame(1, $projects->perPage());
+        $this->assertSame(2, $projects->currentPage());
+        $this->assertSame(2, $projects->total());
+        $this->assertSame(1, $projects->count());
+        $this->assertStringContainsString('/projects', $projects->path());
+    }
 }

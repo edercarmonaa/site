@@ -10,6 +10,7 @@
                 @include('pages.partials.project-card', ['project' => $project, 'variant' => 'feature'])
             @endforeach
         </div>
+        <div class="mt-8">{{ $projects->links() }}</div>
     </div>
 </section>
 @endsection

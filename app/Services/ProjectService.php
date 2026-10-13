@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
@@ -32,6 +33,20 @@ final class ProjectService
     public function latest(int $limit = 3): Collection
     {
         return $this->all()->take($limit);
+    }
+
+    public function paginate(int $page = 1): LengthAwarePaginator
+    {
+        $projects = $this->all();
+        $perPage = (int) config('projects.projects_per_page');
+
+        return new LengthAwarePaginator(
+            $projects->forPage($page, $perPage)->values(),
+            $projects->count(),
+            $perPage,
+            $page,
+            ['path' => route('projects')]
+        );
     }
 
     private function validate(array $project): array
