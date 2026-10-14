@@ -178,8 +178,24 @@ final class PostService
         return preg_replace_callback('/<img([^>]+)>/i', function (array $match): string {
             $tag = $match[0];
             $tag = str_contains($tag, 'loading=') ? $tag : str_replace('<img', '<img loading="lazy"', $tag);
+            $tag = str_contains($tag, 'class=') ? $tag : str_replace('<img', '<img class="glightbox-image"', $tag);
 
-            return str_replace('<img', '<img data-lightbox-image', $tag);
+            preg_match('/\ssrc=(["\'])(.*?)\1/i', $tag, $srcMatch);
+            preg_match('/\salt=(["\'])(.*?)\1/i', $tag, $altMatch);
+
+            $src = $srcMatch[2] ?? '';
+            $title = $altMatch[2] ?? '';
+
+            if ($src === '') {
+                return $tag;
+            }
+
+            return sprintf(
+                '<a href="%s" class="glightbox" data-gallery="blog-images" data-type="image" data-title="%s">%s</a>',
+                e($src),
+                e($title),
+                $tag
+            );
         }, $html) ?? $html;
     }
 

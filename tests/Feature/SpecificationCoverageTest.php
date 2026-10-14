@@ -49,6 +49,6 @@ final class SpecificationCoverageTest extends TestCase
             ->assertOk()
             ->assertSee('data-copy-link')
             ->assertSee('Copiar enlace')
-            ->assertSee('data-lightbox');
+            ->assertSee('glightbox');
     }
 }

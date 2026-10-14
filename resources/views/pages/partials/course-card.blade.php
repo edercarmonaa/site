@@ -14,7 +14,9 @@
         </div>
         <div class="project-feature-panel">
             @if ($course['image'])
-                <img src="{{ $course['image'] }}" alt="Vista previa de {{ $course['name'] }}" loading="lazy" class="project-feature-image">
+                <a href="{{ $course['image'] }}" class="project-feature-link glightbox" data-gallery="courses" data-type="image" data-title="{{ $course['name'] }}" aria-label="Ampliar imagen de {{ $course['name'] }}">
+                    <img src="{{ $course['image'] }}" alt="Vista previa de {{ $course['name'] }}" loading="lazy" class="project-feature-image">
+                </a>
             @else
                 <div aria-hidden="true" class="w-full">
                     <div class="project-feature-window">

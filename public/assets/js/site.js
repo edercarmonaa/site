@@ -78,19 +78,11 @@
     });
   });
 
-  const lightbox = document.querySelector('[data-lightbox]');
-  const lightboxImg = lightbox?.querySelector('img');
-  const closeLightbox = () => lightbox?.classList.add('hidden');
-  document.querySelectorAll('[data-lightbox-image]').forEach((img) => {
-    img.addEventListener('click', () => {
-      if (!lightbox || !lightboxImg) return;
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightbox.classList.remove('hidden');
-      lightbox.classList.add('flex');
+  if (window.GLightbox) {
+    window.GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
     });
-  });
-  lightbox?.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
-  document.querySelector('[data-lightbox-close]')?.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); });
+  }
 })();

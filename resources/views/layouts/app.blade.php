@@ -17,6 +17,7 @@
         tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: '#00a2c2', graphite: '#2f2f35' }, fontFamily: { sans: ['Roboto', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] } } } };
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/css/glightbox.min.css">
     <link rel="stylesheet" href="/assets/css/site.css?v={{ filemtime(public_path('assets/css/site.css')) }}">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicon.ico">
@@ -115,14 +116,11 @@
             <p class="text-sm text-zinc-600 dark:text-zinc-300">© 2026 KaredIt. Desarrollado por Eder Carmona.</p>
         </div>
     </footer>
-    <div data-lightbox class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true">
-        <button type="button" data-lightbox-close class="absolute right-4 top-4 text-white" aria-label="Cerrar imagen">Cerrar</button>
-        <img src="" alt="" class="max-h-full max-w-full rounded-lg">
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.1/dist/js/glightbox.min.js" defer></script>
     <script src="/assets/js/site.js" defer></script>
 </body>
 </html>
