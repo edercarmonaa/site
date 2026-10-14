@@ -116,6 +116,9 @@
             <p class="text-sm text-zinc-600 dark:text-zinc-300">© 2026 KaredIt. Desarrollado por Eder Carmona.</p>
         </div>
     </footer>
+    <div data-fallback-lightbox class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/85 p-4" role="dialog" aria-modal="true">
+        <img src="" alt="" class="max-h-[82vh] max-w-[92vw] rounded-lg object-contain shadow-2xl">
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>

@@ -78,11 +78,67 @@
     });
   });
 
-  if (window.GLightbox) {
-    window.GLightbox({
+  const lightboxLinks = [...document.querySelectorAll('.glightbox')];
+  let galleryLightbox = null;
+
+  if (window.GLightbox && lightboxLinks.length > 0) {
+    galleryLightbox = window.GLightbox({
       selector: '.glightbox',
+      closeButton: true,
+      closeOnOutsideClick: true,
+      keyboardNavigation: true,
       touchNavigation: true,
       loop: true,
     });
   }
+
+  const fallbackLightbox = document.querySelector('[data-fallback-lightbox]');
+  const fallbackImage = fallbackLightbox?.querySelector('img');
+  const closeFallbackLightbox = () => {
+    if (!fallbackLightbox || !fallbackImage) return;
+    fallbackLightbox.classList.add('hidden');
+    fallbackLightbox.classList.remove('flex');
+    fallbackImage.removeAttribute('src');
+    fallbackImage.removeAttribute('alt');
+  };
+
+  if (!galleryLightbox && fallbackLightbox && fallbackImage) {
+    lightboxLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        fallbackImage.src = link.href;
+        fallbackImage.alt = link.dataset.title || link.querySelector('img')?.alt || '';
+        fallbackLightbox.classList.remove('hidden');
+        fallbackLightbox.classList.add('flex');
+      });
+    });
+  }
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const clickedFallback = target.closest('[data-fallback-lightbox] img');
+    const clickedFallbackBackdrop = target.matches('[data-fallback-lightbox]');
+    if (clickedFallback || clickedFallbackBackdrop) {
+      closeFallbackLightbox();
+      return;
+    }
+
+    if (galleryLightbox) {
+      const clickedOpenImage = target.closest('.gslide-image img, .gslide-media img');
+      const clickedBackdrop = target.classList.contains('goverlay');
+
+      if (clickedOpenImage || clickedBackdrop) {
+        galleryLightbox.close();
+      }
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      galleryLightbox?.close();
+      closeFallbackLightbox();
+    }
+  });
 })();
